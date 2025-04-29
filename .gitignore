@@ -137,3 +137,6 @@ dist
 
 # jetbrains ides
 .idea/
+
+# npm
+.npmrc

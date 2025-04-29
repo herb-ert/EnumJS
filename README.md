@@ -2,6 +2,14 @@
 
 A lightweight, versatile utility class for creating and managing enumerable values in JavaScript. Great for maintaining clean, ordered value sets like directions, states, roles, and more.
 
+[![NPM version](https://img.shields.io/npm/v/@herb-ert/enumjs)](https://www.npmjs.com/package/@herb-ert/enumjs)
+[![NPM downloads](https://img.shields.io/npm/dw/@herb-ert/enumjs)](https://www.npmjs.com/package/@herb-ert/enumjs)
+[![GitHub issues](https://img.shields.io/github/issues/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/pulls)
+[![GitHub contributors](https://img.shields.io/github/contributors/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/graphs/contributors)
+[![GitHub forks](https://img.shields.io/github/forks/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/network)
+[![GitHub stars](https://img.shields.io/github/stars/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/stargazers)
+
 ## ✨ Features
 
 - Create immutable, ordered enumerations
@@ -14,17 +22,17 @@ A lightweight, versatile utility class for creating and managing enumerable valu
 ## 📦 Installation
 
 ```bash
-npm install enumjs
+npm install @herb-ert/enumjs
 ```
 
-If you're using ES Modules, import it like this:
+If you're using ES Modules:
 ```js
-import Enum from 'enumjs';
+import Enum from '@herb-ert/enumjs';
 ```
 
 Or with CommonJS:
 ```js
-const Enum = require('enumjs');
+const Enum = require('@herb-ert/enumjs');
 ```
 
 ## 🚀 Usage
@@ -79,10 +87,10 @@ new Enum(...values)
 ```js
 const Roles = new Enum('USER', 'MODERATOR', 'ADMIN');
 
-console.log(Roles.first);          // "USER"
-console.log(Roles.last);           // "ADMIN"
+console.log(Roles.first);           // "USER"
+console.log(Roles.last);            // "ADMIN"
 console.log(Roles.has('MODERATOR')) // true
-console.log(Roles.getByIndex(1));  // "MODERATOR"
+console.log(Roles.getByIndex(1));   // "MODERATOR"
 ```
 
 ## 🔧 License

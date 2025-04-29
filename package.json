@@ -1,0 +1,18 @@
+{
+  "name": "@herb-ert/enumjs",
+  "version": "1.0.0",
+  "description": "\"A lightweight utility class for managing enumerable values in JavaScript.\"",
+  "main": "Enum.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herb-ert/EnumJS.git"
+  },
+  "keywords": ["enum", "enumeration", "utility", "javascript", "typescript"],
+  "author": "herb-ert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/herb-ert/EnumJS/issues"
+  },
+  "homepage": "https://github.com/herb-ert/EnumJS#readme"
+}

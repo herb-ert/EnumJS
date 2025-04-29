@@ -4,11 +4,11 @@ A lightweight, versatile utility class for creating and managing enumerable valu
 
 [![NPM version](https://img.shields.io/npm/v/@herb-ert/enumjs)](https://www.npmjs.com/package/@herb-ert/enumjs)
 [![NPM downloads](https://img.shields.io/npm/dw/@herb-ert/enumjs)](https://www.npmjs.com/package/@herb-ert/enumjs)
-[![GitHub issues](https://img.shields.io/github/issues/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/pulls)
-[![GitHub contributors](https://img.shields.io/github/contributors/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/graphs/contributors)
-[![GitHub forks](https://img.shields.io/github/forks/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/network)
-[![GitHub stars](https://img.shields.io/github/stars/herb-ert/EnumJS)](https://github.com/herb-ert/EnumJS/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/herb-ert/enumjs)](https://github.com/herb-ert/enumjs/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/herb-ert/enumjs)](https://github.com/herb-ert/enumjs/pulls)
+[![GitHub contributors](https://img.shields.io/github/contributors/herb-ert/enumjs)](https://github.com/herb-ert/enumjs/graphs/contributors)
+[![GitHub forks](https://img.shields.io/github/forks/herb-ert/enumjs)](https://github.com/herb-ert/enumjs/network)
+[![GitHub stars](https://img.shields.io/github/stars/herb-ert/enumjs)](https://github.com/herb-ert/enumjs/stargazers)
 
 ## ✨ Features
 

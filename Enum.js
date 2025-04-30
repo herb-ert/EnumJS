@@ -1,13 +1,56 @@
 /**
- * A utility class to create and manage enumerable types.
- * Provides methods to manage and interact with a set of predefined enumerable values.
+ * The `Enum` class is used to create an immutable collection of unique values.
+ * Each value becomes a property of the `Enum` instance, allowing easy access
+ * and manipulation of the collection as a group or as individual items.
  */
 export default class Enum {
   constructor(...args) {
-    this.values = args;
-    args.forEach((arg) => {
-      this[arg] = arg;
+    const nonStrings = args.filter(v => typeof v !== 'string');
+    if (nonStrings.length) {
+      throw new TypeError(
+        `Enum values must be strings. Invalid entries: ${[...new Set(nonStrings)]
+        .map(v => JSON.stringify(v))
+        .join(', ')}`
+      );
+    }
+
+    const uniqueValues = [...new Set(args)];
+    if (uniqueValues.length !== args.length) {
+      const duplicates = args.filter((item, index) => args.indexOf(item) !== index);
+      throw new Error(`Enum values must be unique. Duplicates found: ${[...new Set(duplicates)].join(', ')}`);
+    }
+
+    Object.defineProperties(this, {
+      values: {
+        value: Object.freeze(uniqueValues),
+        writable: false,
+        enumerable: false,
+      },
+      ...Object.fromEntries(
+        uniqueValues
+        .filter(v => typeof v === 'string' || typeof v === 'number' || typeof v === 'symbol')
+        .map(value => [
+          value,
+          {
+            value,
+            writable: false,
+            enumerable: true,
+          },
+        ])
+      ),
     });
+
+    Object.freeze(this);
+  }
+
+  /**
+   * Creates a new instance of the Enum class with the provided arguments.
+   *
+   * @param {...*} args - The arguments to initialize the Enum instance.
+   * @return {Enum} A new Enum instance.
+   */
+  static of(...args) {
+    return new Enum(...args);
   }
 
   /**
@@ -90,12 +133,19 @@ export default class Enum {
   }
 
   /**
-   * Converts the enumeration instance to a string representation.
+   * Converts the current instance into its string representation.
+   * The method formats the values by checking their types and returns
+   * the values in readable form.
    *
-   * @return {string} A string describing the enumeration, listing its values separated by commas.
+   * @return {string} A string representation of the instance, formatted as an enumeration.
    */
   toString() {
-    return `Enum(${this.values.join(', ')})`;
+    const formatted = this.values.map(v => {
+      if (typeof v === 'string') return `"${v}"`;
+      if (typeof v === 'number' || typeof v === 'boolean') return `${v}`;
+      return String(v);
+    });
+    return `Enum(${formatted.join(', ')})`;
   }
 
   /**
@@ -109,7 +159,7 @@ export default class Enum {
   }
 
   /**
-   * Checks if the provided value is the last element in the array `this.values`.
+   * Checks if the provided value is the last element in the array values array.
    *
    * @param {*} value - The value to check against the last element of the array.
    * @return {boolean} Returns true if the provided value is the last element of the array, otherwise false.
@@ -137,6 +187,50 @@ export default class Enum {
    */
   filter(predicate) {
     return new Enum(...this.values.filter(predicate));
+  }
+
+  /**
+   * Checks if at least one element in the array satisfies the provided testing function.
+   *
+   * @param {Function} predicate - A function to test each element of the array. It should return a boolean value.
+   * @return {boolean} Returns true if the callback function returns a truthy value for at least one element in the array; otherwise, false.
+   */
+  some(predicate) {
+    return this.values.some(predicate);
+  }
+
+  /**
+   * Evaluates whether all elements in the `values` array satisfy the provided predicate function.
+   *
+   * @param {Function} predicate - A function that takes an element of the array as an argument
+   * and returns a boolean indicating whether the element satisfies the condition.
+   * @return {boolean} - Returns `true` if all elements in the `values` array satisfy the predicate, otherwise `false`.
+   */
+  every(predicate) {
+    return this.values.every(predicate);
+  }
+
+  /**
+   * Applies a callback function to each element in the `values` array and returns a new array with the results.
+   *
+   * @param {Function} callback - The function to execute on each element in the array. It receives the current element as its argument.
+   * @return {Array} A new array containing the results of applying the callback function to each element in the original array.
+   */
+  map(callback) {
+    return this.values.map(callback);
+  }
+
+  /**
+   * Reduces the array to a single value using a provided callback function.
+   *
+   * @param {Function} callback - A function that is executed on each element of the array. It takes four arguments:
+   *   accumulator (the accumulated value previously returned), currentValue (the current element being processed),
+   *   currentIndex (the index of the current element), and array (the array reduce was called upon).
+   * @param {*} initialValue - The initial value to start the reduction. If not provided, the first element of the array is used.
+   * @return {*} The single value that results from reducing the array.
+   */
+  reduce(callback, initialValue) {
+    return this.values.reduce(callback, initialValue);
   }
 
   /**

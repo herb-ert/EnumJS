@@ -10,7 +10,7 @@ export default class Enum {
       throw new TypeError(
         `Enum values must be strings. Invalid entries: ${[...new Set(nonStrings)]
         .map(v => JSON.stringify(v))
-        .join(', ')}`
+        .join(', ')}`,
       );
     }
 
@@ -36,7 +36,7 @@ export default class Enum {
             writable: false,
             enumerable: true,
           },
-        ])
+        ]),
       ),
     });
 
@@ -44,13 +44,32 @@ export default class Enum {
   }
 
   /**
-   * Creates a new instance of the Enum class with the provided arguments.
+   * Retrieves the number of elements in the `values` array.
    *
-   * @param {...*} args - The arguments to initialize the Enum instance.
-   * @return {Enum} A new Enum instance.
+   * @return {number} The length of the `values` array.
    */
-  static of(...args) {
-    return new Enum(...args);
+  get length() {
+    return this.values.length;
+  }
+
+  /**
+   * Retrieves the first element from the `values` array.
+   * If the array is empty, returns `null`.
+   *
+   * @return {*} The first element of the `values` array, or `null` if the array is empty.
+   */
+  get first() {
+    return this.values[0] ?? null;
+  }
+
+  /**
+   * Retrieves the last element from the `values` array.
+   * If the array is empty, it returns `null`.
+   *
+   * @return {*} The last element of the `values` array, or `null` if the array is empty.
+   */
+  get last() {
+    return this.values[this.values.length - 1] ?? null;
   }
 
   /**
@@ -72,7 +91,9 @@ export default class Enum {
    */
   next(currentValue) {
     const index = this.values.indexOf(currentValue);
-    if (index === -1 || index === this.values.length - 1) return null;
+    if (index === -1 || index === this.values.length - 1) {
+      return null;
+    }
     return this.values[index + 1];
   }
 
@@ -84,7 +105,9 @@ export default class Enum {
    */
   previous(currentValue) {
     const index = this.values.indexOf(currentValue);
-    if (index <= 0) return null;
+    if (index <= 0) {
+      return null;
+    }
     return this.values[index - 1];
   }
 
@@ -98,7 +121,9 @@ export default class Enum {
   compare(firstValue, secondValue) {
     const index1 = this.values.indexOf(firstValue);
     const index2 = this.values.indexOf(secondValue);
-    if (index1 === -1 || index2 === -1) return null;
+    if (index1 === -1 || index2 === -1) {
+      return null;
+    }
     return index1 - index2;
   }
 
@@ -141,8 +166,12 @@ export default class Enum {
    */
   toString() {
     const formatted = this.values.map(v => {
-      if (typeof v === 'string') return `"${v}"`;
-      if (typeof v === 'number' || typeof v === 'boolean') return `${v}`;
+      if (typeof v === 'string') {
+        return `"${v}"`;
+      }
+      if (typeof v === 'number' || typeof v === 'boolean') {
+        return `${v}`;
+      }
       return String(v);
     });
     return `Enum(${formatted.join(', ')})`;
@@ -245,31 +274,12 @@ export default class Enum {
   }
 
   /**
-   * Retrieves the number of elements in the `values` array.
+   * Creates a new instance of the Enum class with the provided arguments.
    *
-   * @return {number} The length of the `values` array.
+   * @param {...*} args - The arguments to initialize the Enum instance.
+   * @return {Enum} A new Enum instance.
    */
-  get length() {
-    return this.values.length;
-  }
-
-  /**
-   * Retrieves the first element from the `values` array.
-   * If the array is empty, returns `null`.
-   *
-   * @return {*} The first element of the `values` array, or `null` if the array is empty.
-   */
-  get first() {
-    return this.values[0] ?? null;
-  }
-
-  /**
-   * Retrieves the last element from the `values` array.
-   * If the array is empty, it returns `null`.
-   *
-   * @return {*} The last element of the `values` array, or `null` if the array is empty.
-   */
-  get last() {
-    return this.values[this.values.length - 1] ?? null;
+  static of(...args) {
+    return new Enum(...args);
   }
 }

@@ -8,7 +8,13 @@
     "type": "git",
     "url": "git+https://github.com/herb-ert/enumjs.git"
   },
-  "keywords": ["enum", "enumeration", "utility", "javascript", "typescript"],
+  "keywords": [
+    "enum",
+    "enumeration",
+    "utility",
+    "javascript",
+    "typescript"
+  ],
   "author": "herb-ert",
   "license": "MIT",
   "bugs": {

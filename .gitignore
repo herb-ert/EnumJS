@@ -138,4 +138,5 @@ dist
 .idea/
 
 # npm
+.npmrc.npmjs
 .npmrc.github

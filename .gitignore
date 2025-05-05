@@ -102,7 +102,6 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
 # vitepress build output
 **/.vitepress/dist
@@ -139,4 +138,5 @@ dist
 .idea/
 
 # npm
-.npmrc
+.npmrc.npmjs
+.npmrc.github

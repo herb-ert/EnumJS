@@ -16,7 +16,7 @@
     "typescript"
   ],
   "scripts": {
-    "publish:npm": "npm publish --access public --userconfig .npmrc.npmjs",
+    "publish:npm": "npm publish --access public",
     "publish:github": "npm publish --userconfig .npmrc.github",
     "publish:all": "npm run publish:npm && npm run publish:github"
   },

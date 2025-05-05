@@ -20,6 +20,9 @@
     "publish:github": "npm publish --userconfig .npmrc.github",
     "publish:all": "npm run publish:npm && npm run publish:github"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "author": "herb-ert",
   "license": "MIT",
   "bugs": {

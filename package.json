@@ -16,7 +16,7 @@
     "typescript"
   ],
   "scripts": {
-    "publish:npm": "npm publish --access public",
+    "publish:npm": "npm publish --access public --registry https://registry.npmjs.org/",
     "publish:github": "npm publish --userconfig .npmrc.github",
     "publish:all": "npm run publish:npm && npm run publish:github"
   },

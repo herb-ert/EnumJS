@@ -1,7 +1,7 @@
 # 🧩 Enum.js
 
 A lightweight, versatile utility class for creating and managing enumerable values in JavaScript. Great for maintaining
-clean, ordered value sets like directions, states, roles, and more.
+clean, ordered value sets like directions, states, roles, and more. Inspired by [@bartek1009x](https://github.com/bartek1009x)'s [SimpleEnum](https://github.com/bartek1009x/SimpleEnum).
 
 [![NPM version](https://img.shields.io/npm/v/@herb-ert/enumjs)](https://www.npmjs.com/package/@herb-ert/enumjs)
 [![NPM downloads](https://img.shields.io/npm/dw/@herb-ert/enumjs)](https://www.npmjs.com/package/@herb-ert/enumjs)
